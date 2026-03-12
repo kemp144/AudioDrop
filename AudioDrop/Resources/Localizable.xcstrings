@@ -1,0 +1,801 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "appPicker.close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "appPicker.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم تسجيل الصوت على مستوى التطبيق، وليس على مستوى النافذة."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zvuk se zaznamenava na urovni aplikace, ne jednotliveho okna."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lyd optages pa appniveau, ikke pr. vindue."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Ton wird auf App-Ebene aufgenommen, nicht pro Fenster."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio is captured at the app level, not per window."
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El audio se captura a nivel de app, no por ventana."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El audio se captura a nivel de app, no por ventana."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aani tallennetaan sovellustasolla, ei ikkunakohtaisesti."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L audio est capture au niveau de l app, pas par fenetre."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L audio viene acquisito a livello di app, non per finestra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声はウインドウ単位ではなくアプリ単位で収録されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오디오는 창별이 아니라 앱 단위로 캡처됩니다."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lyd tas opp pa appniva, ikke per vindu."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio wordt op appniveau opgenomen, niet per venster."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzwiek jest nagrywany na poziomie aplikacji, nie pojedynczego okna."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O audio e capturado no nivel do app, nao por janela."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O audio e captado ao nivel da app, nao por janela."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ljud spelas in pa appniva, inte per fonster."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses pencere bazinda degil, uygulama duzeyinde kaydedilir."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音频按应用级别捕捉，不按窗口区分。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音訊會以 App 層級擷取，不會細分到視窗。"
+          }
+        }
+      }
+    },
+    "appPicker.noApps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No apps found"
+          }
+        }
+      }
+    },
+    "appPicker.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر تطبيقا"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte aplikaci"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaelg en app"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App auswahlen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose an App"
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una app"
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una app"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valitse appi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir une app"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli un app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリを選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 선택"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velg en app"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies een app"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz aplikacje"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um app"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha uma app"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valj en app"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir uygulama secin"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择应用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇 App"
+          }
+        }
+      }
+    },
+    "appSelection.appLevel.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتم التسجيل على مستوى التطبيق."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nahravani probiha na urovni aplikace."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optagelse sker pa appniveau."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufnahme erfolgt auf App-Ebene."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio is recorded at the app level"
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El audio se graba a nivel de app"
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El audio se graba a nivel de app"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aani tallennetaan sovellustasolla"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L audio est enregistre au niveau de l app"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L audio viene registrato a livello di app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声はアプリ単位で収録されます"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오디오는 앱 단위로 녹음됩니다"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lyd tas opp pa appniva"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio wordt op appniveau opgenomen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzwiek jest nagrywany na poziomie aplikacji"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O audio e gravado no nivel do app"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O audio e gravado ao nivel da app"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ljud spelas in pa appniva"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses uygulama duzeyinde kaydedilir"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音频按应用级别录制"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音訊會以 App 層級錄製"
+          }
+        }
+      }
+    },
+    "appSelection.change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "تغيير" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zmenit" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Skift" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Andern" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Change" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Cambiar" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Cambiar" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Vaihda" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Modifier" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Cambia" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "変更" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "변경" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Endre" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Wijzig" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Zmien" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Alterar" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Alterar" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Andra" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Degistir" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "更改" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "更改" } }
+      }
+    },
+    "appSelection.choose" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "اختر تطبيقا" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vyberte aplikaci" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Vaelg app" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "App auswahlen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose an App" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Elige una app" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Elige una app" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Valitse appi" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Choisir une app" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Scegli un app" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アプリを選択" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "앱 선택" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Velg en app" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Kies een app" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Wybierz aplikacje" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Escolha um app" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Escolha uma app" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Valj en app" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Uygulama sec" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择应用" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "選擇 App" } }
+      }
+    },
+    "format.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "التنسيق" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Formato" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Formato" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Muoto" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Formato" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "形式" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "형식" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Formaat" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Formato" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Formato" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Format" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Biçim" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "格式" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "格式" } }
+      }
+    },
+    "mode.appAudio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Selected App Audio" } }
+      }
+    },
+    "mode.appAudio.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record audio from one selected app" } }
+      }
+    },
+    "mode.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "الوضع" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Rezim" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Tilstand" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Modus" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mode" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Modo" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Modo" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Tila" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mode" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Modalita" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "モード" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "모드" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Modus" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Modus" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Tryb" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Modo" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Modo" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Lage" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Mod" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "模式" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "模式" } }
+      }
+    },
+    "mode.systemAudio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System Audio" } }
+      }
+    },
+    "mode.systemAudio.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record all audio playing on your Mac" } }
+      }
+    },
+    "permission.continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "متابعة" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pokracovat" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Fortsat" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fortfahren" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Jatka" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Continuer" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Continua" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "続ける" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "계속" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Fortsett" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Ga door" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Kontynuuj" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Fortsatt" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Devam et" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "继续" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "繼續" } }
+      }
+    },
+    "permission.openSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "فتح الإعدادات" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Otevrit Nastaveni" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Abn Indstillinger" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Einstellungen offnen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Settings" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Abrir Ajustes" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Abrir Ajustes" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Avaa asetukset" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvrir Reglages" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Apri Impostazioni" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定を開く" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "설정 열기" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Apne Innstillinger" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Open Instellingen" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Otworz Ustawienia" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Abrir Ajustes" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Abrir Definicoes" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Oppna Installningar" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Ayarlari Ac" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开设置" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "打開設定" } }
+      }
+    },
+    "permission.recheck" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "إعادة التحقق" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zkontrolovat znovu" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Tjek igen" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erneut prufen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Check Again" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Volver a comprobar" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Volver a revisar" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Tarkista uudelleen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Verifier a nouveau" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Controlla di nuovo" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "もう一度確認" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다시 확인" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Sjekk igjen" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Opnieuw controleren" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Sprawdz ponownie" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Verificar novamente" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Verificar novamente" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Kontrollera igen" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar denetle" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "再次检查" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "再次檢查" } }
+      }
+    },
+    "permission.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "يحتاج AudioDrop إلى إذن" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop potrebuje opravneni" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop har brug for adgang" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop benotigt Zugriff" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop Needs Permission" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop necesita permiso" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop necesita permiso" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop tarvitsee luvan" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop a besoin d autorisation" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop richiede un permesso" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop に許可が必要です" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop에 권한이 필요합니다" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop trenger tilgang" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop heeft toestemming nodig" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop potrzebuje uprawnienia" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop precisa de permissao" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop precisa de permissao" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop behover behorighet" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop izne ihtiyac duyar" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop 需要权限" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "AudioDrop 需要權限" } }
+      }
+    },
+    "record.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "سجل الصوت الجاري تشغيله على Mac" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nahravejte zvuk prehravany na Macu" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Optag den lyd, der afspilles pa din Mac" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nimm den Ton auf, der auf deinem Mac abgespielt wird" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record the audio playing on your Mac" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Graba el audio que suena en tu Mac" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Graba el audio que suena en tu Mac" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Tallenna Macilla toistuva aani" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrez l audio lu sur votre Mac" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Registra l audio in riproduzione sul tuo Mac" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac で再生中の音声を録音" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Mac에서 재생 중인 오디오를 녹음" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Ta opp lyden som spilles av pa Macen" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Neem de audio op die op je Mac wordt afgespeeld" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Nagrywaj dzwiek odtwarzany na Macu" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Grave o audio que esta tocando no seu Mac" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Grave o audio em reproducao no seu Mac" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Spela in ljudet som spelas pa din Mac" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Mac inizda calan sesi kaydedin" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "录制 Mac 上正在播放的音频" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "錄製 Mac 上正在播放的音訊" } }
+      }
+    },
+    "recording.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "بدء التسجيل" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Spustit nahravani" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Start optagelse" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufnahme starten" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Recording" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar grabacion" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar grabacion" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Aloita tallennus" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demarrer l enregistrement" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Avvia registrazione" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音を開始" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "녹음 시작" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Start opptak" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Opname starten" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Rozpocznij nagrywanie" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar gravacao" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar gravacao" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Starta inspelning" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydi baslat" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开始录制" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "開始錄製" } }
+      }
+    },
+    "recording.start.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Starts a new recording" } }
+      }
+    },
+    "recording.stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "إيقاف التسجيل" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zastavit nahravani" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Stop optagelse" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufnahme stoppen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stop Recording" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Detener grabacion" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Detener grabacion" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Pysayta tallennus" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Arreter l enregistrement" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Ferma registrazione" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音を停止" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "녹음 중지" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Stopp opptak" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Opname stoppen" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Zatrzymaj nagrywanie" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Parar gravacao" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Parar gravacao" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Stoppa inspelning" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydi durdur" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "停止录制" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "停止錄製" } }
+      }
+    },
+    "recording.stop.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stops the current recording" } }
+      }
+    },
+    "save.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "اختر مكان الحفظ بعد إيقاف التسجيل." } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Misto ulozeni vyberete po zastaveni nahravani." } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Vaelg gemmested, nar optagelsen stopper." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wahle den Speicherort, wenn du die Aufnahme stoppst." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose where to save after you stop recording." } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Elige donde guardar al detener la grabacion." } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Elige donde guardar al detener la grabacion." } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Valitse tallennuspaikka, kun lopetat tallennuksen." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Choisissez l emplacement d enregistrement apres l arret." } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Scegli dove salvare dopo aver fermato la registrazione." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音を停止した後に保存先を選択します。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "녹음을 멈춘 뒤 저장 위치를 선택합니다." } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Velg hvor opptaket skal lagres nar du stopper." } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Kies waar je wilt opslaan nadat je stopt." } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Wybierz miejsce zapisu po zatrzymaniu nagrania." } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Escolha onde salvar depois de parar a gravacao." } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Escolha onde guardar depois de parar a gravacao." } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Valj var du vill spara nar du stoppar inspelningen." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydi durdurduktan sonra nereye kaydedilecegini secin." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "停止录制后选择保存位置。" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "停止錄製後再選擇儲存位置。" } }
+      }
+    },
+    "status.showInFinder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "إظهار في Finder" } },
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zobrazit ve Finderu" } },
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Vis i Finder" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Im Finder zeigen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Show in Finder" } },
+        "es-ES" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar en Finder" } },
+        "es-MX" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar en Finder" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Nayta Finderissa" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Afficher dans le Finder" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Mostra nel Finder" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Finder で表示" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Finder에서 보기" } },
+        "nb" : { "stringUnit" : { "state" : "translated", "value" : "Vis i Finder" } },
+        "nl" : { "stringUnit" : { "state" : "translated", "value" : "Toon in Finder" } },
+        "pl" : { "stringUnit" : { "state" : "translated", "value" : "Pokaz w Finderze" } },
+        "pt-BR" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar no Finder" } },
+        "pt-PT" : { "stringUnit" : { "state" : "translated", "value" : "Mostrar no Finder" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Visa i Finder" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Finder'da goster" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在 Finder 中显示" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "在 Finder 中顯示" } }
+      }
+    },
+    "status.showInFinder.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reveals the saved recording in Finder" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
