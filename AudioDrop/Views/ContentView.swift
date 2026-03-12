@@ -92,7 +92,7 @@ private struct SourceView: View {
             Text("Source")
                 .font(.headline)
 
-            HStack(spacing: 12) {
+            HStack(alignment: .top, spacing: 12) {
                 Image(systemName: "speaker.wave.3.fill")
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(Color(red: 0.18, green: 0.45, blue: 0.94))
@@ -110,12 +110,18 @@ private struct SourceView: View {
                     Text("Records the audio currently playing on your Mac.")
                         .font(.callout)
                         .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .layoutPriority(1)
             }
 
             Text("Local-only. Choose where to save after you stop recording.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .accessibilityElement(children: .combine)
     }
@@ -147,9 +153,10 @@ private struct FormatSelectionView: View {
             .disabled(!viewModel.recordingState.canStartRecording)
 
             Text("save.summary", tableName: nil, bundle: .main,
-                 comment: "Summary that recordings are saved after recording stops")
+                 comment: "Summary below the audio format picker")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

@@ -6936,25 +6936,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose where to save after you stop recording."
+            "value" : "Choose the format of the audio file."
           }
         },
         "en-AU" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose where to save after you stop recording."
+            "value" : "Choose the format of the audio file."
           }
         },
         "en-CA" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose where to save after you stop recording."
+            "value" : "Choose the format of the audio file."
           }
         },
         "en-GB" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose where to save after you stop recording."
+            "value" : "Choose the format of the audio file."
           }
         },
         "es-ES" : {
