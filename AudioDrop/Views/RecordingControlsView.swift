@@ -2,42 +2,50 @@ import SwiftUI
 
 struct RecordingControlsView: View {
     @EnvironmentObject var viewModel: RecordingViewModel
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        VStack(spacing: 16) {
-            // Elapsed time (visible during recording)
+        VStack(spacing: 12) {
             if viewModel.recordingState.isRecording {
-                VStack(spacing: 4) {
-                    HStack(spacing: 6) {
-                        Circle()
-                            .fill(.red)
-                            .frame(width: 10, height: 10)
-                            .opacity(pulseOpacity)
-                            .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: pulseOpacity)
+                HStack(spacing: 8) {
+                    Circle()
+                        .fill(Color(red: 0.91, green: 0.26, blue: 0.21))
+                        .frame(width: 8, height: 8)
+                        .opacity(pulseOpacity)
+                        .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: pulseOpacity)
 
-                        Text(viewModel.formattedElapsedTime)
-                            .font(.system(.title, design: .monospaced))
-                            .fontWeight(.medium)
-                            .monospacedDigit()
-                            .contentTransition(.numericText())
-                    }
+                    Text(viewModel.formattedElapsedTime)
+                        .font(.system(.headline, design: .monospaced))
+                        .fontWeight(.semibold)
+                        .monospacedDigit()
+                        .contentTransition(.numericText())
                 }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(Color(nsColor: .controlBackgroundColor))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(borderColor, lineWidth: 1)
+                )
                 .accessibilityElement(children: .combine)
                 .accessibilityLabel(Text("recording.elapsed.label \(viewModel.formattedElapsedTime)",
                                         tableName: nil, bundle: .main,
                                         comment: "Accessibility label for elapsed time"))
             }
 
-            // Record / Stop button
             if viewModel.recordingState.canStartRecording {
                 startButton
             } else if viewModel.recordingState.canStopRecording {
                 stopButton
             } else {
-                // Processing state — show disabled button
                 ProgressView()
                     .controlSize(.regular)
-                    .padding(8)
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity)
             }
         }
     }
@@ -48,19 +56,21 @@ struct RecordingControlsView: View {
                 await viewModel.startRecording()
             }
         } label: {
-            HStack(spacing: 8) {
+            HStack(spacing: 7) {
                 Image(systemName: "record.circle")
-                    .font(.title3)
+                    .font(.body)
                 Text("recording.start", tableName: nil, bundle: .main,
                      comment: "Start Recording button label")
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
+            .padding(.vertical, 11)
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.red)
-        .controlSize(.large)
-        .disabled(viewModel.recordingMode == .appAudio && viewModel.selectedApp == nil)
+        .buttonStyle(.plain)
+        .foregroundStyle(.white)
+        .background(
+            Capsule(style: .continuous)
+                .fill(Color(red: 0.18, green: 0.45, blue: 0.94))
+        )
         .accessibilityHint(Text("recording.start.hint", tableName: nil, bundle: .main,
                                 comment: "Accessibility hint for start recording button"))
     }
@@ -71,18 +81,21 @@ struct RecordingControlsView: View {
                 await viewModel.stopRecording()
             }
         } label: {
-            HStack(spacing: 8) {
+            HStack(spacing: 7) {
                 Image(systemName: "stop.circle.fill")
-                    .font(.title3)
+                    .font(.body)
                 Text("recording.stop", tableName: nil, bundle: .main,
                      comment: "Stop Recording button label")
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
+            .padding(.vertical, 11)
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.secondary)
-        .controlSize(.large)
+        .buttonStyle(.plain)
+        .foregroundStyle(.white)
+        .background(
+            Capsule(style: .continuous)
+                .fill(Color.black.opacity(0.85))
+        )
         .keyboardShortcut(.return, modifiers: .command)
         .accessibilityHint(Text("recording.stop.hint", tableName: nil, bundle: .main,
                                 comment: "Accessibility hint for stop recording button"))
@@ -90,5 +103,9 @@ struct RecordingControlsView: View {
 
     private var pulseOpacity: Double {
         viewModel.recordingState.isRecording ? 0.3 : 1.0
+    }
+
+    private var borderColor: Color {
+        colorScheme == .dark ? Color.white.opacity(0.08) : Color.black.opacity(0.06)
     }
 }

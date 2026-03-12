@@ -1,9 +1,7 @@
-import AppKit
+import AVFoundation
 import Combine
-import CoreMedia
 import Foundation
 import OSLog
-import SwiftUI
 
 private let logger = Logger(subsystem: "com.audiodrop.app", category: "RecordingViewModel")
 
@@ -12,18 +10,11 @@ final class RecordingViewModel: ObservableObject {
     // MARK: - Published State
 
     @Published var recordingState: RecordingState = .idle
-    @Published var recordingMode: RecordingMode = .systemAudio
     @Published var audioFormat: AudioFormat = .m4a
-    @Published var selectedApp: RecordableApp?
-    @Published var availableApps: [RecordableApp] = []
     @Published var elapsedTime: TimeInterval = 0
-    @Published var showPermissionExplanation = false
-    @Published var showAppPicker = false
-    @Published var shouldPromptForPermission = false
 
     // MARK: - Services
 
-    let permissionManager = PermissionManager()
     private let captureService = AudioCaptureService()
     private let fileExportService = FileExportService()
     // nonisolated(unsafe) because AudioFileWriter.appendBuffer is internally synchronized with NSLock
@@ -36,7 +27,6 @@ final class RecordingViewModel: ObservableObject {
 
     init() {
         captureService.delegate = self
-        permissionManager.refreshPermissionStateOnLaunch()
     }
 
     // MARK: - Recording Control
@@ -44,38 +34,20 @@ final class RecordingViewModel: ObservableObject {
     func startRecording() async {
         guard recordingState.canStartRecording else { return }
 
-        guard permissionManager.hasScreenRecordingPermission else {
-            shouldPromptForPermission = permissionManager.permissionState == .notDetermined
-            showPermissionExplanation = true
-            recordingState = .permissionRequired
-            return
-        }
-
         recordingState = .preparingToRecord
 
         do {
             // Initialize file writer
             fileWriter = try AudioFileWriter(format: audioFormat)
-
-            // Start capture based on mode
-            switch recordingMode {
-            case .systemAudio:
-                try await captureService.startSystemAudioCapture()
-            case .appAudio:
-                guard let app = selectedApp else {
-                    recordingState = .error(String(localized: "error.noAppSelected", defaultValue: "Please select an app to record"))
-                    return
-                }
-                try await captureService.startAppAudioCapture(for: app)
-            }
+            try await captureService.startSystemAudioCapture()
 
             recordingState = .recording
             startTimer()
 
-            logger.info("Recording started in \(self.recordingMode.rawValue) mode")
+            logger.info("Recording started")
         } catch {
             logger.error("Failed to start recording: \(error.localizedDescription)")
-            recordingState = .error(error.localizedDescription)
+            presentCaptureError(error)
             fileWriter?.cleanup()
             fileWriter = nil
         }
@@ -110,53 +82,9 @@ final class RecordingViewModel: ObservableObject {
             fileWriter = nil
         } catch {
             logger.error("Failed to stop recording: \(error.localizedDescription)")
-            recordingState = .error(error.localizedDescription)
+            presentCaptureError(error)
             fileWriter?.cleanup()
             fileWriter = nil
-        }
-    }
-
-    // MARK: - App Selection
-
-    func refreshAvailableApps() async {
-        do {
-            availableApps = try await captureService.availableApps()
-        } catch {
-            logger.error("Failed to load apps: \(error.localizedDescription)")
-            availableApps = []
-        }
-    }
-
-    func selectApp(_ app: RecordableApp) {
-        selectedApp = app
-        showAppPicker = false
-    }
-
-    // MARK: - Permission
-
-    func openScreenRecordingSettings() {
-        permissionManager.openSystemSettings()
-    }
-
-    func recheckPermission() async {
-        await permissionManager.checkPermission()
-        if permissionManager.hasScreenRecordingPermission {
-            shouldPromptForPermission = false
-            showPermissionExplanation = false
-            recordingState = .idle
-        }
-    }
-
-    func requestScreenRecordingPermission() async {
-        permissionManager.requestPermission()
-        await permissionManager.checkPermission()
-
-        if permissionManager.hasScreenRecordingPermission {
-            shouldPromptForPermission = false
-            showPermissionExplanation = false
-            recordingState = .idle
-        } else {
-            recordingState = .permissionRequired
         }
     }
 
@@ -179,6 +107,23 @@ final class RecordingViewModel: ObservableObject {
         recordingStartTime = nil
     }
 
+    private func presentCaptureError(_ error: Error) {
+        let message = error.localizedDescription
+        let lowercased = message.localizedLowercase
+
+        if lowercased.contains("permission") || lowercased.contains("not permitted") || lowercased.contains("!hog") {
+            recordingState = .error(
+                String(
+                    localized: "error.audioPermissionDenied",
+                    defaultValue: "Audio recording permission is required. Allow AudioDrop in System Settings and try again."
+                )
+            )
+            return
+        }
+
+        recordingState = .error(message)
+    }
+
     // MARK: - Formatted Time
 
     var formattedElapsedTime: String {
@@ -198,16 +143,15 @@ final class RecordingViewModel: ObservableObject {
 // MARK: - AudioCaptureDelegate
 
 extension RecordingViewModel: AudioCaptureDelegate {
-    nonisolated func audioCaptureDidReceiveBuffer(_ sampleBuffer: CMSampleBuffer) {
-        // Write audio buffer to file — this happens on the audio queue
-        fileWriter?.appendBuffer(sampleBuffer)
+    nonisolated func audioCaptureDidReceiveBuffer(_ audioBuffer: AVAudioPCMBuffer) {
+        fileWriter?.appendBuffer(audioBuffer)
     }
 
     nonisolated func audioCaptureDidFail(with error: Error) {
         Task { @MainActor in
             logger.error("Capture failed: \(error.localizedDescription)")
             self.stopTimer()
-            self.recordingState = .error(error.localizedDescription)
+            self.presentCaptureError(error)
             self.fileWriter?.cleanup()
             self.fileWriter = nil
         }

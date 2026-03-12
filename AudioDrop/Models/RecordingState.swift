@@ -7,7 +7,6 @@ enum RecordingState: Equatable {
     case stopping
     case saving
     case saved(URL)
-    case permissionRequired
     case error(String)
 
     var isRecording: Bool {
@@ -17,7 +16,7 @@ enum RecordingState: Equatable {
 
     var canStartRecording: Bool {
         switch self {
-        case .idle, .saved, .error, .permissionRequired:
+        case .idle, .saved, .error:
             return true
         default:
             return false
@@ -43,8 +42,6 @@ enum RecordingState: Equatable {
             return String(localized: "status.saving", defaultValue: "Saving…")
         case .saved:
             return String(localized: "status.saved", defaultValue: "Saved successfully")
-        case .permissionRequired:
-            return String(localized: "status.permissionRequired", defaultValue: "Screen Recording permission is required")
         case .error(let message):
             return message
         }
@@ -56,8 +53,7 @@ enum RecordingState: Equatable {
              (.preparingToRecord, .preparingToRecord),
              (.recording, .recording),
              (.stopping, .stopping),
-             (.saving, .saving),
-             (.permissionRequired, .permissionRequired):
+             (.saving, .saving):
             return true
         case (.saved(let a), .saved(let b)):
             return a == b

@@ -2,59 +2,55 @@
 
 ## Executive Recommendation
 
-**Ship AudioDrop v1 with both System Audio and Selected App Audio.**
+**Ship AudioDrop v1 with System Audio only.**
 
-Rationale: Both modes use the same Apple framework (ScreenCaptureKit), require the same
-permission (Screen Recording), and share 90% of the implementation. The marginal complexity
-of adding Selected App Audio is low, and it significantly increases the product's value
-proposition. Both modes are well-supported public APIs since macOS 14.0.
+Rationale: System Audio solves the core product promise with the lowest UX and App Review risk.
+Selected App Audio is technically possible with public Core Audio taps, but it adds more moving
+parts, more failure modes, and a less stable picker experience than this v1 should carry.
 
 ## Official Apple API Decision
 
-### Chosen Framework: ScreenCaptureKit (macOS 14.0+)
+### Chosen Framework: Core Audio Process Taps (macOS 15.0+)
 
-ScreenCaptureKit is Apple's official framework for capturing screen content including audio.
-It provides:
+Core Audio provides public APIs for capturing outgoing system audio through process taps and
+aggregate devices. For AudioDrop's narrow utility scope, this is the cleanest audio-only path.
 
-- `SCShareableContent` — enumerates displays, applications, and windows
-- `SCContentFilter` — defines what to capture (display, app, or window)
-- `SCStream` — performs the actual capture with audio/video buffers
-- `SCStreamConfiguration` — configures audio/video capture parameters
-- `SCContentSharingPicker` — system-provided UI for content selection (macOS 14+)
+- `AudioHardwareSystem.makeProcessTap(description:)`
+- `AudioHardwareSystem.makeAggregateDevice(description:)`
+- `AudioDeviceCreateIOProcIDWithBlock`
+- `AudioDeviceStart` / `AudioDeviceStop`
 
-### Why ScreenCaptureKit is the Safest Choice
+### Why Core Audio Taps Are the Safest Choice
 
-1. **Official Apple API** — explicitly designed for audio/screen capture use cases
-2. **Clear permission model** — uses the Screen Recording TCC permission
-3. **App Store approved** — many shipping Mac App Store apps use it
-4. **Audio-only capture** — supports capturing audio without meaningful video overhead
-5. **App-level filtering** — can filter capture to specific applications
-6. **macOS 14+ maturity** — stable, well-documented, with system picker UI
+1. **Official Apple API** — built for outgoing audio capture
+2. **Audio-only architecture** — no screen capture stack, no misleading permission story
+3. **Lower user confusion** — matches the product promise directly
+4. **App Store compatible** — public APIs, sandbox-safe save flow, no virtual drivers
+5. **Simpler v1 scope** — stable System Audio capture without picker complexity
 
 ### Rejected Alternatives
 
 | Alternative | Reason for Rejection |
 |---|---|
-| Core Audio Process Taps (`AudioHardwareCreateProcessTap`) | macOS 15+ only — too new, small install base |
-| Virtual Audio Drivers (e.g., Soundflower approach) | Not App Store compatible, requires kernel/system extension |
-| Private APIs / IOKit audio taps | Would be rejected in App Review |
-| `AVCaptureSession` with audio | Designed for mic/camera capture, not system audio |
-| Aggregate/Multi-Output Audio Devices | Fragile, requires AudioServerPlugin — not sandboxed |
+| ScreenCaptureKit | Works, but adds screen-related permission friction to an audio-only app |
+| Selected App Audio in v1 | Technically possible, but current picker/capture stability is not strong enough for shipping |
+| Virtual Audio Drivers | Not App Store compatible |
+| Private APIs / hacks | Rejection risk |
+| Microphone capture APIs | Not for system output capture |
 
-### Minimum macOS Target: 14.0 (Sonoma)
+### Minimum macOS Target: 15.0 (Sequoia)
 
-- Required for `SCContentSharingPicker` and mature ScreenCaptureKit APIs
-- Good install base (macOS 14 released October 2023)
-- Avoids workarounds needed for macOS 12/13 limitations
+- Required for the public Swift Core Audio process tap APIs used here
+- Avoids workarounds, drivers, or unsupported compatibility layers
+- Smaller support matrix, higher implementation confidence
 
 ## Permission Implications
 
-### Required Permission: Screen Recording (TCC)
+### Required Permission: Audio Capture
 
-- ScreenCaptureKit requires Screen Recording permission even for audio-only capture
-- This is a one-time system prompt — once granted, it persists
-- On macOS 15+, Screen Recording permission resets monthly (Apple policy)
-- The app should show a pre-permission explanation before triggering the system prompt
+- macOS may prompt for audio capture permission the first time AudioDrop records system audio
+- AudioDrop should explain clearly that it records audio only and stores files locally
+- No Screen Recording permission is required in this v1 path
 
 ### Entitlements Required
 
@@ -63,55 +59,46 @@ It provides:
 
 ### No Additional Entitlements Needed
 
-- ScreenCaptureKit does NOT require a special entitlement beyond sandbox
 - No microphone entitlement needed (we don't capture mic input)
 - No network entitlement needed (fully offline)
 
 ## App Review Risk Assessment
 
 ### Low Risk (Proceed Confidently)
-- Using public ScreenCaptureKit APIs as intended
-- Clear Screen Recording permission purpose string
+- Using public Core Audio APIs as intended
+- Clear audio capture purpose string
 - Local-only, no network, no account
 - Honest UI messaging about what is captured
 
 ### Medium Risk (Mitigate Carefully)
-- Screen Recording permission may prompt extra reviewer scrutiny
-- Reviewer note should clearly explain why permission is needed
+- macOS 15 minimum support should be stated clearly in metadata
+- Reviewer note should explain that capture is system-audio only
 - App must show visible recording indicator
-- Selected App Audio captures at app level, not window level — UI must be honest
 
 ### Mitigation Strategy
-- Include detailed reviewer notes explaining recording behavior
-- Show clear pre-permission explanation in the app
+- Include reviewer notes explaining the Core Audio tap implementation
+- Keep the UI focused on one mode only
 - Display prominent recording indicator during capture
-- Accurately describe capture scope (app-level, not window/tab-level)
+- Never market the app as a screen recorder or per-app recorder
 
 ## Implementation Architecture
 
 ### System Audio Mode
-- Capture the primary display's audio stream
-- `SCContentFilter(display:excludingApplications:exceptingWindows:)` with empty exclusions
-- Audio from all apps is captured
-- Video frames are minimized (2x2px, 1fps) to reduce overhead
-
-### Selected App Audio Mode
-- User selects an app from running applications list
-- `SCContentFilter(display:including:[selectedApp]:exceptingWindows:[])` filters to one app
-- Only that app's audio is captured
-- UI clearly states: "Audio is captured at the app level"
+- Create a private system audio tap that excludes AudioDrop itself
+- Create a private aggregate device bound to the tap
+- Read PCM buffers from the aggregate device IO proc
+- Forward PCM buffers into `AudioFileWriter`
 
 ### Audio File Writing
-- **M4A (AAC)**: AVAssetWriter with AAC encoding — consumer-friendly, small files
-- **WAV (PCM)**: AVAudioFile with linear PCM — lossless, universal compatibility
-- Both formats are stable and well-tested on macOS
+- **M4A (AAC)**: capture to CAF, then export to Apple M4A
+- **WAV (PCM)**: write directly with `AVAudioFile`
+- Both formats stay local until the user chooses a save destination
 
 ### Recording Flow
-1. User selects mode and format
+1. User launches AudioDrop
 2. User clicks Start Recording
-3. App checks/requests Screen Recording permission
-4. SCStream starts capturing audio buffers
-5. AudioFileWriter writes buffers to chosen format
+3. Core Audio tap starts capturing outgoing audio
+4. AudioFileWriter writes buffers to the chosen format
 6. User clicks Stop Recording
 7. App finalizes file and presents save dialog
 8. File is saved to user-chosen location

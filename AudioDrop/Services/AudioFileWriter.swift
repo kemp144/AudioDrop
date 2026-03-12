@@ -1,22 +1,48 @@
 import AVFoundation
 import AppKit
+import Darwin
 import Foundation
 import OSLog
 import UniformTypeIdentifiers
 
 private let logger = Logger(subsystem: "com.audiodrop.app", category: "AudioFileWriter")
 
-final class AudioFileWriter {
+enum FileQuarantineManager {
+    static let quarantineAttributeName = "com.apple.quarantine"
+
+    static func clearIfPresent(at url: URL) {
+        let removalStatus = url.withUnsafeFileSystemRepresentation { fileSystemPath -> Int32 in
+            guard let fileSystemPath else {
+                errno = EINVAL
+                return -1
+            }
+
+            return removexattr(fileSystemPath, quarantineAttributeName, 0)
+        }
+
+        guard removalStatus != 0 else {
+            return
+        }
+
+        let errorCode = errno
+        guard errorCode != ENOATTR else {
+            return
+        }
+
+        let posixCode = POSIXErrorCode(rawValue: errorCode)
+        let description = posixCode.map { "\($0)" } ?? "errno \(errorCode)"
+        logger.error(
+            "Failed to clear quarantine attribute from \(url.path, privacy: .public): \(description, privacy: .public)"
+        )
+    }
+}
+
+final class AudioFileWriter: @unchecked Sendable {
     private let format: AudioFormat
-    private let tempURL: URL
+    private let captureURL: URL
+    private let convertedURL: URL?
 
-    // M4A writing
-    private var assetWriter: AVAssetWriter?
-    private var audioInput: AVAssetWriterInput?
-
-    // WAV writing
     private var audioFile: AVAudioFile?
-
     private var hasReceivedAudio = false
     private let writeLock = NSLock()
 
@@ -24,224 +50,113 @@ final class AudioFileWriter {
         self.format = format
 
         let tempDir = FileManager.default.temporaryDirectory
-        let filename = "AudioDrop_\(Self.timestampString()).\(format.fileExtension)"
-        self.tempURL = tempDir.appendingPathComponent(filename)
-
-        // Clean up any existing file at the temp path
-        try? FileManager.default.removeItem(at: tempURL)
+        let baseFilename = "AudioDrop_\(Self.timestampString())"
 
         switch format {
-        case .m4a:
-            try setupM4AWriter()
         case .wav:
-            // WAV writer is initialized on first audio buffer (we need the format description)
-            break
+            self.captureURL = tempDir.appendingPathComponent("\(baseFilename).wav")
+            self.convertedURL = nil
+        case .m4a:
+            self.captureURL = tempDir.appendingPathComponent("\(baseFilename).caf")
+            self.convertedURL = tempDir.appendingPathComponent("\(baseFilename).m4a")
         }
 
-        logger.info("AudioFileWriter initialized for \(format.displayName) at \(self.tempURL.path)")
+        try? FileManager.default.removeItem(at: captureURL)
+        if let convertedURL {
+            try? FileManager.default.removeItem(at: convertedURL)
+        }
+
+        logger.info("AudioFileWriter initialized for \(self.format.displayName) at \(self.captureURL.path)")
     }
 
-    // MARK: - M4A Setup
-
-    private func setupM4AWriter() throws {
-        let writer = try AVAssetWriter(outputURL: tempURL, fileType: .m4a)
-
-        let audioSettings: [String: Any] = [
-            AVFormatIDKey: kAudioFormatMPEG4AAC,
-            AVSampleRateKey: 48000,
-            AVNumberOfChannelsKey: 2,
-            AVEncoderBitRateKey: 192_000
-        ]
-
-        let input = AVAssetWriterInput(mediaType: .audio, outputSettings: audioSettings)
-        input.expectsMediaDataInRealTime = true
-
-        writer.add(input)
-
-        self.assetWriter = writer
-        self.audioInput = input
-    }
-
-    // MARK: - WAV Setup (deferred until first buffer)
-
-    private func setupWAVWriter(from sampleBuffer: CMSampleBuffer) throws {
-        guard let formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer),
-              let asbd = CMAudioFormatDescriptionGetStreamBasicDescription(formatDesc) else {
-            throw AudioFileWriterError.invalidAudioFormat
-        }
-
-        guard let avFormat = AVAudioFormat(streamDescription: asbd) else {
-            throw AudioFileWriterError.invalidAudioFormat
-        }
-
-        // Create a standard PCM format for WAV output
-        guard let outputFormat = AVAudioFormat(
-            commonFormat: .pcmFormatFloat32,
-            sampleRate: avFormat.sampleRate,
-            channels: avFormat.channelCount,
-            interleaved: false
-        ) else {
-            throw AudioFileWriterError.invalidAudioFormat
-        }
-
-        let file = try AVAudioFile(forWriting: tempURL, settings: outputFormat.settings)
-        self.audioFile = file
-    }
-
-    // MARK: - Writing Buffers
-
-    func appendBuffer(_ sampleBuffer: CMSampleBuffer) {
+    func appendBuffer(_ audioBuffer: AVAudioPCMBuffer) {
         writeLock.lock()
         defer { writeLock.unlock() }
 
-        switch format {
-        case .m4a:
-            appendM4ABuffer(sampleBuffer)
-        case .wav:
-            appendWAVBuffer(sampleBuffer)
-        }
-    }
-
-    private func appendM4ABuffer(_ sampleBuffer: CMSampleBuffer) {
-        guard let writer = assetWriter, let input = audioInput else { return }
-
-        if writer.status == .unknown {
-            let startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-            writer.startWriting()
-            writer.startSession(atSourceTime: startTime)
-        }
-
-        guard writer.status == .writing else {
-            if let error = writer.error {
-                logger.error("AssetWriter error: \(error.localizedDescription)")
-            }
-            return
-        }
-
-        if input.isReadyForMoreMediaData {
-            input.append(sampleBuffer)
-            hasReceivedAudio = true
-        }
-    }
-
-    private func appendWAVBuffer(_ sampleBuffer: CMSampleBuffer) {
         do {
             if audioFile == nil {
-                try setupWAVWriter(from: sampleBuffer)
+                try setupPCMWriter(from: audioBuffer.format)
             }
 
-            guard let audioFile = audioFile else { return }
-
-            guard let formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer),
-                  let asbd = CMAudioFormatDescriptionGetStreamBasicDescription(formatDesc),
-                  let inputFormat = AVAudioFormat(streamDescription: asbd) else {
-                return
-            }
-
-            let frameCount = CMSampleBufferGetNumSamples(sampleBuffer)
-            guard frameCount > 0 else { return }
-
-            guard let pcmBuffer = AVAudioPCMBuffer(pcmFormat: inputFormat, frameCapacity: AVAudioFrameCount(frameCount)) else {
-                return
-            }
-
-            pcmBuffer.frameLength = AVAudioFrameCount(frameCount)
-
-            // Copy sample buffer data into PCM buffer
-            try sampleBuffer.withAudioBufferList { bufferList, _ in
-                let ablPointer = bufferList.unsafePointer
-                for i in 0..<Int(ablPointer.pointee.mNumberBuffers) {
-                    let srcBuffer = ablPointer.pointee.mBuffers // For single buffer
-                    if i == 0, let srcData = srcBuffer.mData, let dstData = pcmBuffer.audioBufferList.pointee.mBuffers.mData {
-                        memcpy(dstData, srcData, Int(srcBuffer.mDataByteSize))
-                    }
-                }
-            }
-
-            // If formats differ, we need conversion
-            if inputFormat.commonFormat == audioFile.processingFormat.commonFormat {
-                try audioFile.write(from: pcmBuffer)
-            } else if let converter = AVAudioConverter(from: inputFormat, to: audioFile.processingFormat) {
-                let convertedBuffer = AVAudioPCMBuffer(
-                    pcmFormat: audioFile.processingFormat,
-                    frameCapacity: AVAudioFrameCount(frameCount)
-                )!
-
-                var error: NSError?
-                converter.convert(to: convertedBuffer, error: &error) { _, outStatus in
-                    outStatus.pointee = .haveData
-                    return pcmBuffer
-                }
-
-                if let error = error {
-                    logger.error("Audio conversion error: \(error.localizedDescription)")
-                    return
-                }
-
-                try audioFile.write(from: convertedBuffer)
-            }
-
+            guard let audioFile else { return }
+            try audioFile.write(from: audioBuffer)
             hasReceivedAudio = true
         } catch {
-            logger.error("WAV write error: \(error.localizedDescription)")
+            logger.error("PCM write error: \(error.localizedDescription)")
         }
     }
 
-    // MARK: - Finalize
+    private func setupPCMWriter(from format: AVAudioFormat) throws {
+        audioFile = try AVAudioFile(
+            forWriting: captureURL,
+            settings: format.settings,
+            commonFormat: format.commonFormat,
+            interleaved: format.isInterleaved
+        )
+    }
 
     func finalize() async throws -> URL {
-        switch format {
-        case .m4a:
-            return try await finalizeM4A()
-        case .wav:
-            return try finalizeWAV()
+        closeCaptureFile()
+
+        guard hasReceivedAudio else {
+            throw AudioFileWriterError.noAudioWritten
         }
+
+        let outputURL: URL
+        switch format {
+        case .wav:
+            outputURL = captureURL
+        case .m4a:
+            outputURL = try await transcodeToM4A()
+        }
+
+        // Generated recordings should open like normal user documents.
+        FileQuarantineManager.clearIfPresent(at: outputURL)
+        return outputURL
     }
 
-    private func finalizeM4A() async throws -> URL {
-        guard let writer = assetWriter else {
+    private func transcodeToM4A() async throws -> URL {
+        guard let convertedURL else {
             throw AudioFileWriterError.writerNotInitialized
         }
 
-        audioInput?.markAsFinished()
-        await writer.finishWriting()
+        try? FileManager.default.removeItem(at: convertedURL)
 
-        if writer.status == .failed, let error = writer.error {
-            throw error
+        let asset = AVURLAsset(url: captureURL)
+        guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A) else {
+            throw AudioFileWriterError.exportUnavailable
         }
 
-        guard hasReceivedAudio else {
-            throw AudioFileWriterError.noAudioWritten
+        exportSession.shouldOptimizeForNetworkUse = false
+        do {
+            try await exportSession.export(to: convertedURL, as: .m4a)
+        } catch is CancellationError {
+            throw AudioFileWriterError.exportCancelled
+        } catch {
+            throw AudioFileWriterError.exportFailed
         }
 
-        return tempURL
+        return convertedURL
     }
-
-    private func finalizeWAV() throws -> URL {
-        writeLock.lock()
-        // Closing the AVAudioFile happens automatically when the reference is released
-        audioFile = nil
-        writeLock.unlock()
-
-        guard hasReceivedAudio else {
-            throw AudioFileWriterError.noAudioWritten
-        }
-
-        return tempURL
-    }
-
-    // MARK: - Cleanup
 
     func cleanup() {
-        try? FileManager.default.removeItem(at: tempURL)
-    }
+        try? FileManager.default.removeItem(at: captureURL)
 
-    // MARK: - Helpers
+        if let convertedURL {
+            try? FileManager.default.removeItem(at: convertedURL)
+        }
+    }
 
     private static func timestampString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
         return formatter.string(from: Date())
+    }
+
+    private func closeCaptureFile() {
+        writeLock.lock()
+        audioFile = nil
+        writeLock.unlock()
     }
 }
 
@@ -251,6 +166,9 @@ enum AudioFileWriterError: LocalizedError {
     case writerNotInitialized
     case invalidAudioFormat
     case noAudioWritten
+    case exportUnavailable
+    case exportFailed
+    case exportCancelled
 
     var errorDescription: String? {
         switch self {
@@ -260,6 +178,12 @@ enum AudioFileWriterError: LocalizedError {
             return String(localized: "error.invalidFormat", defaultValue: "Invalid audio format received")
         case .noAudioWritten:
             return String(localized: "error.noAudioWritten", defaultValue: "No audio was captured during the recording")
+        case .exportUnavailable:
+            return String(localized: "error.exportUnavailable", defaultValue: "AudioDrop could not prepare the final audio file")
+        case .exportFailed:
+            return String(localized: "error.exportFailed", defaultValue: "AudioDrop could not finish the recording file")
+        case .exportCancelled:
+            return String(localized: "error.exportCancelled", defaultValue: "The recording export was cancelled")
         }
     }
 }
@@ -274,7 +198,13 @@ final class FileExportService {
         panel.canCreateDirectories = true
         panel.isExtensionHidden = false
 
-        let response = await panel.beginSheetModal(for: NSApp.keyWindow ?? NSApp.mainWindow ?? NSWindow())
+        let response: NSApplication.ModalResponse
+        if let window = NSApp.keyWindow ?? NSApp.mainWindow {
+            response = await panel.beginSheetModal(for: window)
+        } else {
+            response = panel.runModal()
+        }
+
         guard response == .OK, let destinationURL = panel.url else {
             return nil
         }
@@ -283,7 +213,9 @@ final class FileExportService {
             try FileManager.default.removeItem(at: destinationURL)
         }
 
+        FileQuarantineManager.clearIfPresent(at: tempURL)
         try FileManager.default.copyItem(at: tempURL, to: destinationURL)
+        FileQuarantineManager.clearIfPresent(at: destinationURL)
         return destinationURL
     }
 }

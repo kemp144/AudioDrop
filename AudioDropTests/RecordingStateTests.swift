@@ -50,12 +50,6 @@ final class RecordingStateTests: XCTestCase {
         XCTAssertFalse(state.canStopRecording)
     }
 
-    func testPermissionRequiredCanStartRecording() {
-        let state = RecordingState.permissionRequired
-        XCTAssertTrue(state.canStartRecording)
-        XCTAssertFalse(state.canStopRecording)
-    }
-
     // MARK: - Equality
 
     func testEqualityForSimpleStates() {
@@ -82,7 +76,7 @@ final class RecordingStateTests: XCTestCase {
         let states: [RecordingState] = [
             .idle, .preparingToRecord, .recording, .stopping,
             .saving, .saved(URL(fileURLWithPath: "/tmp/t.m4a")),
-            .permissionRequired, .error("test error")
+            .error("test error")
         ]
 
         for state in states {

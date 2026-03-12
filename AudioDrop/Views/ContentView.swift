@@ -2,72 +2,130 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: RecordingViewModel
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Header
-            HeaderView()
+        ZStack {
+            backgroundColor
+                .ignoresSafeArea()
 
-            Divider()
-
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Mode Selection
-                    ModeSelectionView()
-
-                    // App Picker (when in app audio mode)
-                    if viewModel.recordingMode == .appAudio {
-                        AppSelectionView()
-                    }
-
-                    // Format Picker
-                    FormatSelectionView()
-
-                    Divider()
-
-                    // Recording Controls
-                    RecordingControlsView()
-
-                    // Status
-                    StatusView()
+            VStack(spacing: 16) {
+                HeaderView()
+                SurfaceCard {
+                    SourceView()
                 }
-                .padding(24)
+                SurfaceCard {
+                    FormatSelectionView()
+                }
+                RecordingControlsView()
+                StatusView()
+                Spacer(minLength: 0)
             }
         }
-        .frame(width: 400)
-        .frame(minHeight: 480)
-        .sheet(isPresented: $viewModel.showPermissionExplanation) {
-            PermissionExplanationView()
+        .padding(18)
+        .frame(width: 368)
+        .frame(minHeight: 432)
+    }
+
+    private var backgroundColor: Color {
+        if colorScheme == .dark {
+            return Color(nsColor: .windowBackgroundColor)
         }
-        .sheet(isPresented: $viewModel.showAppPicker) {
-            AppPickerView()
-        }
-        .task {
-            viewModel.permissionManager.refreshPermissionStateOnLaunch()
-        }
+
+        return Color(nsColor: NSColor(calibratedRed: 0.96, green: 0.97, blue: 0.99, alpha: 1))
     }
 }
 
-// MARK: - Header
-
 private struct HeaderView: View {
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 8) {
             Text("AudioDrop")
-                .font(.title2)
-                .fontWeight(.semibold)
+                .font(.system(size: 24, weight: .semibold, design: .default))
 
             Text("record.subtitle", tableName: nil, bundle: .main,
                  comment: "App subtitle shown below the title")
-                .font(.subheadline)
+                .font(.headline)
                 .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
         }
-        .padding(.vertical, 16)
+        .padding(.top, 12)
+        .padding(.bottom, 6)
         .frame(maxWidth: .infinity)
     }
 }
 
-// MARK: - Format Selection
+private struct SurfaceCard<Content: View>: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            content
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color(nsColor: .controlBackgroundColor))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(borderColor, lineWidth: 1)
+        )
+        .shadow(color: shadowColor, radius: 12, x: 0, y: 6)
+    }
+
+    private var borderColor: Color {
+        colorScheme == .dark ? Color.white.opacity(0.08) : Color.black.opacity(0.06)
+    }
+
+    private var shadowColor: Color {
+        colorScheme == .dark ? .clear : Color.black.opacity(0.04)
+    }
+}
+
+private struct SourceView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Source")
+                .font(.headline)
+
+            HStack(spacing: 12) {
+                Image(systemName: "speaker.wave.3.fill")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(Color(red: 0.18, green: 0.45, blue: 0.94))
+                    .frame(width: 40, height: 40)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(iconBackground)
+                    )
+
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("System Audio")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+
+                    Text("Records the audio currently playing on your Mac.")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Text("Local-only. Choose where to save after you stop recording.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    private var iconBackground: Color {
+        colorScheme == .dark
+            ? Color.accentColor.opacity(0.22)
+            : Color(red: 0.90, green: 0.94, blue: 1.0)
+    }
+}
 
 private struct FormatSelectionView: View {
     @EnvironmentObject var viewModel: RecordingViewModel
@@ -90,7 +148,7 @@ private struct FormatSelectionView: View {
 
             Text("save.summary", tableName: nil, bundle: .main,
                  comment: "Summary that recordings are saved after recording stops")
-                .font(.caption)
+                .font(.footnote)
                 .foregroundStyle(.secondary)
         }
     }

@@ -11,6 +11,6 @@ struct AudioDropApp: App {
         }
         .windowStyle(.titleBar)
         .windowResizability(.contentSize)
-        .defaultSize(width: 420, height: 520)
+        .defaultSize(width: 368, height: 432)
     }
 }

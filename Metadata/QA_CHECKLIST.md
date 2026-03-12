@@ -17,14 +17,6 @@
 - [ ] Recording with no audio playing produces a valid (silent) file
 - [ ] Recording while switching audio sources works correctly
 
-### Functionality — App Audio Mode
-- [ ] App list populates with running applications
-- [ ] Selecting an app shows it in the UI
-- [ ] Recording captures audio from selected app only
-- [ ] If selected app closes during recording, app handles gracefully
-- [ ] Changing selected app while not recording works
-- [ ] Cannot start recording without selecting an app
-
 ### File Output
 - [ ] M4A files are valid and playable
 - [ ] WAV files are valid and playable
@@ -37,17 +29,14 @@
 - [ ] Invalid destination (read-only) shows error gracefully
 
 ### Permissions
-- [ ] First launch triggers permission explanation view
-- [ ] "Open System Settings" button works
-- [ ] "I've Granted Permission" button rechecks correctly
+- [ ] macOS audio capture permission prompt appears if required
 - [ ] App works after granting permission
-- [ ] App shows correct state when permission is denied
-- [ ] Permission denied → re-granting → restarting app works
+- [ ] Permission denied state shows a clear, accurate message
+- [ ] App never asks for Screen Recording permission
 
 ### UI / UX
 - [ ] App launches to correct initial state
 - [ ] Light mode looks correct
-- [ ] Dark mode looks correct
 - [ ] Window size is appropriate
 - [ ] All buttons have correct enabled/disabled states
 - [ ] Recording indicator (red dot) pulses during recording
@@ -65,10 +54,15 @@
 ### Localization (spot-check per language)
 - [ ] German (de) — no clipped text, correct translations
 - [ ] French (fr) — no clipped text, correct translations
+- [ ] French Canada (fr-CA) — terminology fits Québec/French Canada expectations
 - [ ] Japanese (ja) — correct script, no layout issues
 - [ ] Arabic (ar) — RTL layout functions (if applicable)
+- [ ] Hebrew (he) — RTL layout functions (if applicable)
 - [ ] Chinese Simplified (zh-Hans) — correct characters
-- [ ] All 20 target languages have no missing keys
+- [ ] English regional variants (en-AU, en-CA, en-GB) load correctly
+- [ ] Newly added locales (ca, hr, el, hi, hu, id, ms, ro, ru, sk, th, uk, vi) render without clipping
+- [ ] Info.plist permission string is localized for all supported locales
+- [ ] All 39 target locales have no missing keys
 
 ### App Store Readiness
 - [ ] Bundle ID is correct
@@ -76,7 +70,7 @@
 - [ ] App icon is present (all sizes)
 - [ ] Info.plist has all required keys
 - [ ] Entitlements are correct (sandbox + user-selected files)
-- [ ] NSScreenCaptureUsageDescription is set
+- [ ] NSAudioCaptureUsageDescription is set
 - [ ] Privacy policy URL is live
 - [ ] Support URL is live
 - [ ] App Store description is finalized

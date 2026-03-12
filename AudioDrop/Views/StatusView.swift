@@ -2,18 +2,20 @@ import SwiftUI
 
 struct StatusView: View {
     @EnvironmentObject var viewModel: RecordingViewModel
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        VStack(spacing: 8) {
-            HStack(spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 5) {
                 statusIcon
                 Text(viewModel.recordingState.statusText)
                     .font(.callout)
+                    .fontWeight(.medium)
                     .foregroundStyle(statusColor)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .animation(.easeInOut(duration: 0.2), value: viewModel.recordingState)
 
-            // Show saved file path
             if case .saved(let url) = viewModel.recordingState {
                 Button {
                     NSWorkspace.shared.selectFile(url.path, inFileViewerRootedAtPath: url.deletingLastPathComponent().path)
@@ -23,15 +25,24 @@ struct StatusView: View {
                         Text("status.showInFinder", tableName: nil, bundle: .main,
                              comment: "Button to reveal saved file in Finder")
                     }
-                    .font(.caption)
+                    .font(.footnote)
+                    .fontWeight(.medium)
                 }
                 .buttonStyle(.link)
                 .accessibilityHint(Text("status.showInFinder.hint", tableName: nil, bundle: .main,
                                         comment: "Accessibility hint for show in Finder button"))
             }
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 8)
+        .padding(13)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(nsColor: .controlBackgroundColor))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(borderColor, lineWidth: 1)
+        )
     }
 
     @ViewBuilder
@@ -50,9 +61,6 @@ struct StatusView: View {
         case .saved:
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(.green)
-        case .permissionRequired:
-            Image(systemName: "lock.shield")
-                .foregroundStyle(.orange)
         case .error:
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundStyle(.red)
@@ -63,8 +71,6 @@ struct StatusView: View {
         switch viewModel.recordingState {
         case .error:
             return .red
-        case .permissionRequired:
-            return .orange
         case .saved:
             return .green
         case .recording:
@@ -72,5 +78,9 @@ struct StatusView: View {
         default:
             return .secondary
         }
+    }
+
+    private var borderColor: Color {
+        colorScheme == .dark ? Color.white.opacity(0.08) : Color.black.opacity(0.06)
     }
 }
