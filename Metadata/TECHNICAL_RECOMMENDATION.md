@@ -1,8 +1,8 @@
-# AudioDrop v1 — Technical Recommendation
+# SonicDroplet v1 — Technical Recommendation
 
 ## Executive Recommendation
 
-**Ship AudioDrop v1 with System Audio only.**
+**Ship SonicDroplet v1 with System Audio only.**
 
 Rationale: System Audio solves the core product promise with the lowest UX and App Review risk.
 Selected App Audio is technically possible with public Core Audio taps, but it adds more moving
@@ -13,7 +13,7 @@ parts, more failure modes, and a less stable picker experience than this v1 shou
 ### Chosen Framework: Core Audio Process Taps (macOS 15.0+)
 
 Core Audio provides public APIs for capturing outgoing system audio through process taps and
-aggregate devices. For AudioDrop's narrow utility scope, this is the cleanest audio-only path.
+aggregate devices. For SonicDroplet's narrow utility scope, this is the cleanest audio-only path.
 
 - `AudioHardwareSystem.makeProcessTap(description:)`
 - `AudioHardwareSystem.makeAggregateDevice(description:)`
@@ -48,8 +48,8 @@ aggregate devices. For AudioDrop's narrow utility scope, this is the cleanest au
 
 ### Required Permission: Audio Capture
 
-- macOS may prompt for audio capture permission the first time AudioDrop records system audio
-- AudioDrop should explain clearly that it records audio only and stores files locally
+- macOS may prompt for audio capture permission the first time SonicDroplet records system audio
+- SonicDroplet should explain clearly that it records audio only and stores files locally
 - No Screen Recording permission is required in this v1 path
 
 ### Entitlements Required
@@ -84,7 +84,7 @@ aggregate devices. For AudioDrop's narrow utility scope, this is the cleanest au
 ## Implementation Architecture
 
 ### System Audio Mode
-- Create a private system audio tap that excludes AudioDrop itself
+- Create a private system audio tap that excludes SonicDroplet itself
 - Create a private aggregate device bound to the tap
 - Read PCM buffers from the aggregate device IO proc
 - Forward PCM buffers into `AudioFileWriter`
@@ -95,7 +95,7 @@ aggregate devices. For AudioDrop's narrow utility scope, this is the cleanest au
 - Both formats stay local until the user chooses a save destination
 
 ### Recording Flow
-1. User launches AudioDrop
+1. User launches SonicDroplet
 2. User clicks Start Recording
 3. Core Audio tap starts capturing outgoing audio
 4. AudioFileWriter writes buffers to the chosen format

@@ -3,7 +3,7 @@ import Combine
 import Foundation
 import OSLog
 
-private let logger = Logger(subsystem: "com.audiodrop.app", category: "RecordingViewModel")
+private let logger = Logger(subsystem: "com.kemp144.sonicdroplet", category: "RecordingViewModel")
 
 @MainActor
 final class RecordingViewModel: ObservableObject {
@@ -115,7 +115,7 @@ final class RecordingViewModel: ObservableObject {
             recordingState = .error(
                 String(
                     localized: "error.audioPermissionDenied",
-                    defaultValue: "Audio recording permission is required. Allow AudioDrop in System Settings and try again."
+                    defaultValue: "Audio recording permission is required. Allow SonicDroplet in System Settings and try again."
                 )
             )
             return

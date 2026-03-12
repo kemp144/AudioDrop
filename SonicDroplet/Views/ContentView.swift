@@ -39,7 +39,7 @@ struct ContentView: View {
 private struct HeaderView: View {
     var body: some View {
         VStack(spacing: 8) {
-            Text("AudioDrop")
+            Text("SonicDroplet")
                 .font(.system(size: 24, weight: .semibold, design: .default))
 
             Text("record.subtitle", tableName: nil, bundle: .main,

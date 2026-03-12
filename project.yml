@@ -1,6 +1,6 @@
-name: AudioDrop
+name: SonicDroplet
 options:
-  bundleIdPrefix: com.audiodrop
+  bundleIdPrefix: com.kemp144
   deploymentTarget:
     macOS: "15.0"
   xcodeVersion: "16.0"
@@ -16,25 +16,25 @@ settings:
     SWIFT_STRICT_CONCURRENCY: complete
 
 targets:
-  AudioDrop:
+  SonicDroplet:
     type: application
     platform: macOS
     sources:
-      - path: AudioDrop
+      - path: SonicDroplet
         excludes:
           - "**/*.xcstrings"
     resources:
-      - path: AudioDrop/Resources/Assets.xcassets
+      - path: SonicDroplet/Resources/Assets.xcassets
       # Keep the matching .pbxproj entries in source control as well.
       # XcodeGen 2.45 does not currently emit .xcstrings into the resources build phase here.
-      - path: AudioDrop/Resources/Localizable.xcstrings
-      - path: AudioDrop/Resources/InfoPlist.xcstrings
+      - path: SonicDroplet/Resources/Localizable.xcstrings
+      - path: SonicDroplet/Resources/InfoPlist.xcstrings
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.audiodrop.app
-        PRODUCT_NAME: AudioDrop
-        INFOPLIST_FILE: AudioDrop/Info.plist
-        CODE_SIGN_ENTITLEMENTS: AudioDrop/AudioDrop.entitlements
+        PRODUCT_BUNDLE_IDENTIFIER: com.kemp144.sonicdroplet
+        PRODUCT_NAME: SonicDroplet
+        INFOPLIST_FILE: SonicDroplet/Info.plist
+        CODE_SIGN_ENTITLEMENTS: SonicDroplet/SonicDroplet.entitlements
         CODE_SIGN_STYLE: Automatic
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: 1.0.0
@@ -43,16 +43,16 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ENABLE_HARDENED_RUNTIME: YES
 
-  AudioDropTests:
+  SonicDropletTests:
     type: bundle.unit-test
     platform: macOS
     sources:
-      - path: AudioDropTests
+      - path: SonicDropletTests
     dependencies:
-      - target: AudioDrop
+      - target: SonicDroplet
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.audiodrop.app.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.kemp144.sonicdroplet.tests
         GENERATE_INFOPLIST_FILE: YES
         BUNDLE_LOADER: "$(TEST_HOST)"
-        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/AudioDrop.app/Contents/MacOS/AudioDrop"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/SonicDroplet.app/Contents/MacOS/SonicDroplet"

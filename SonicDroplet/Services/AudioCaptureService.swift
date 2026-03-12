@@ -4,7 +4,7 @@ import CoreAudio
 import Foundation
 import OSLog
 
-private let logger = Logger(subsystem: "com.audiodrop.app", category: "AudioCapture")
+private let logger = Logger(subsystem: "com.kemp144.sonicdroplet", category: "AudioCapture")
 
 protocol AudioCaptureDelegate: AnyObject, Sendable {
     func audioCaptureDidReceiveBuffer(_ audioBuffer: AVAudioPCMBuffer)
@@ -58,7 +58,7 @@ private final class CoreAudioTapSession {
     weak var delegate: AudioCaptureDelegate?
 
     private let audioSystem = AudioHardwareSystem.shared
-    private let audioQueue = DispatchQueue(label: "com.audiodrop.audioCapture", qos: .userInitiated)
+    private let audioQueue = DispatchQueue(label: "com.kemp144.sonicdroplet.audioCapture", qos: .userInitiated)
 
     private var tap: AudioHardwareTap?
     private var aggregateDevice: AudioHardwareAggregateDevice?
@@ -113,7 +113,7 @@ private final class CoreAudioTapSession {
     }
 
     private func startCapture(with tapDescription: CATapDescription) throws {
-        tapDescription.name = "AudioDrop"
+        tapDescription.name = "SonicDroplet"
         tapDescription.isPrivate = true
         tapDescription.muteBehavior = .unmuted
 
@@ -126,8 +126,8 @@ private final class CoreAudioTapSession {
         self.tap = tap
 
         var aggregateDescription: [String: Any] = [
-            kAudioAggregateDeviceNameKey: "AudioDrop Capture",
-            kAudioAggregateDeviceUIDKey: "com.audiodrop.capture.\(UUID().uuidString)",
+            kAudioAggregateDeviceNameKey: "SonicDroplet Capture",
+            kAudioAggregateDeviceUIDKey: "com.kemp144.sonicdroplet.capture.\(UUID().uuidString)",
             kAudioAggregateDeviceIsPrivateKey: true,
             kAudioAggregateDeviceTapListKey: [[
                 kAudioSubTapUIDKey: try tap.uid,
@@ -257,15 +257,15 @@ enum AudioCaptureError: LocalizedError {
         case .captureAlreadyRunning:
             return String(localized: "error.alreadyRunning", defaultValue: "A recording is already in progress")
         case .failedToCreateTap:
-            return String(localized: "error.failedToCreateTap", defaultValue: "AudioDrop could not start system audio capture")
+            return String(localized: "error.failedToCreateTap", defaultValue: "SonicDroplet could not start system audio capture")
         case .failedToCreateAggregateDevice:
-            return String(localized: "error.failedToCreateAggregateDevice", defaultValue: "AudioDrop could not prepare the audio capture device")
+            return String(localized: "error.failedToCreateAggregateDevice", defaultValue: "SonicDroplet could not prepare the audio capture device")
         case .failedToCreateIOProc:
-            return String(localized: "error.failedToCreateIOProc", defaultValue: "AudioDrop could not start reading captured audio")
+            return String(localized: "error.failedToCreateIOProc", defaultValue: "SonicDroplet could not start reading captured audio")
         case .invalidTapFormat:
-            return String(localized: "error.invalidTapFormat", defaultValue: "AudioDrop received an unsupported audio format")
+            return String(localized: "error.invalidTapFormat", defaultValue: "SonicDroplet received an unsupported audio format")
         case .permissionDenied:
-            return String(localized: "error.audioPermissionDenied", defaultValue: "Audio recording permission is required. Allow AudioDrop in System Settings and try again.")
+            return String(localized: "error.audioPermissionDenied", defaultValue: "Audio recording permission is required. Allow SonicDroplet in System Settings and try again.")
         case .coreAudioFailure(let operation, let statusDescription):
             return String(
                 localized: "error.coreAudioFailure",

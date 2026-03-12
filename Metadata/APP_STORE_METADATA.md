@@ -1,7 +1,7 @@
-# AudioDrop — App Store Metadata
+# SonicDroplet — App Store Metadata
 
 ## App Name
-AudioDrop
+SonicDroplet
 
 ## Supported App Localizations
 
@@ -56,16 +56,16 @@ Binary localization is prepared for all current App Store Connect locales suppor
 audio recorder,system audio,mac audio,sound capture,audio capture,mac recorder,m4a,wav,local,offline
 
 ## Short Description (for promotional text field, 170 chars)
-AudioDrop records the audio playing on your Mac and saves it locally as M4A or WAV. Simple, private, and focused. No account required.
+SonicDroplet records the audio playing on your Mac and saves it locally as M4A or WAV. Simple, private, and focused. No account required.
 
 ## Full App Store Description
 
 Record the audio playing on your Mac with a single click.
 
-AudioDrop is a simple, focused utility that records the audio currently playing on your Mac and saves it locally on your Mac.
+SonicDroplet is a simple, focused utility that records the audio currently playing on your Mac and saves it locally on your Mac.
 
 RECORD SYSTEM AUDIO
-Capture everything playing through your Mac's speakers. Music, podcasts, video calls, game audio — if your Mac is playing it, AudioDrop can record it.
+Capture everything playing through your Mac's speakers. Music, podcasts, video calls, game audio — if your Mac is playing it, SonicDroplet can record it.
 
 SAVE YOUR WAY
 Export recordings in M4A (AAC) or WAV format. Choose where to save — your files, your choice.
@@ -80,7 +80,7 @@ PRIVATE BY DESIGN
 SIMPLE AND NATIVE
 Built with native macOS technologies. Clean interface, light presentation, and full keyboard and VoiceOver accessibility.
 
-Note: AudioDrop uses Apple's public Core Audio APIs to record system audio on macOS 15 or later. If macOS asks for audio capture permission, AudioDrop uses it only to record audio and never uploads your files.
+Note: SonicDroplet uses Apple's public Core Audio APIs to record system audio on macOS 15 or later. If macOS asks for audio capture permission, SonicDroplet uses it only to record audio and never uploads your files.
 
 ## Category
 Primary: Utilities
@@ -94,7 +94,7 @@ Paid (recommended: $4.99 USD)
 
 ## Review Notes (for App Review Team)
 
-AudioDrop is a simple macOS utility that records audio output.
+SonicDroplet is a simple macOS utility that records audio output.
 
 WHAT IT DOES:
 - Records system-wide audio playing on the Mac
@@ -118,8 +118,8 @@ IMPORTANT NOTES:
 - The shipping build includes localized UI and permission strings for all supported App Store locales listed above
 
 TO TEST:
-1. Launch AudioDrop
-2. If macOS prompts for audio capture permission, allow AudioDrop
+1. Launch SonicDroplet
+2. If macOS prompts for audio capture permission, allow SonicDroplet
 3. Play audio on your Mac (e.g., music in Apple Music)
 4. Click "Start Recording"
 5. After a few seconds, click "Stop Recording"
@@ -127,54 +127,68 @@ TO TEST:
 
 ## Privacy Policy Outline
 
-AudioDrop Privacy Policy
+SonicDroplet Privacy Policy
 
-1. Data Collection: AudioDrop does not collect, store, or transmit any personal data.
+1. Data Collection: SonicDroplet does not collect, store, or transmit any personal data.
 
-2. Audio Recordings: All audio recordings are stored locally on your Mac at locations you choose. AudioDrop never uploads, shares, or transmits your recordings.
+2. Audio Recordings: All audio recordings are stored locally on your Mac at locations you choose. SonicDroplet never uploads, shares, or transmits your recordings.
 
-3. Permissions: AudioDrop requests audio capture permission solely to record audio output using Apple's public Core Audio APIs. No screen content is recorded or stored.
+3. Permissions: SonicDroplet requests audio capture permission solely to record audio output using Apple's public Core Audio APIs. No screen content is recorded or stored.
 
-4. Network Access: AudioDrop does not access the internet. The app works fully offline.
+4. Network Access: SonicDroplet does not access the internet. The app works fully offline.
 
-5. Analytics: AudioDrop does not include any analytics, tracking, or telemetry.
+5. Analytics: SonicDroplet does not include any analytics, tracking, or telemetry.
 
-6. Third-Party Services: AudioDrop does not integrate with any third-party services.
+6. Third-Party Services: SonicDroplet does not integrate with any third-party services.
 
-7. Contact: [support email to be added]
+7. Contact: https://kemp144.github.io/AudioDrop/support/
 
 ## Manual App Store Connect Fields Still Required
 
-- Privacy Policy URL
-- Support URL
-- Marketing URL (optional)
-- Support email
+- Privacy Policy URL: https://kemp144.github.io/AudioDrop/privacy/
+- Support URL: https://kemp144.github.io/AudioDrop/support/
+- Marketing URL (optional): https://kemp144.github.io/AudioDrop/
+- Support email: not used; support handled through the support URL / GitHub Issues
 - Localized screenshots for required Mac App Store sizes
+
+## Release Status
+
+Verified locally before submit:
+- Project identity is `SonicDroplet`
+- Bundle ID is `com.kemp144.sonicdroplet`
+- `xcodebuild` project listing and app build succeed
+- Privacy/support/marketing pages exist in `docs/` for GitHub Pages deployment
+
+Still required outside the repo:
+- Push `main` with `docs/` and confirm GitHub Pages publishes successfully
+- Confirm the final App Store app name is accepted in App Store Connect
+- Upload the Archive from `SonicDroplet.xcodeproj`
+- Provide App Store screenshots
 
 ## Support URL Content Outline
 
-AudioDrop Support
+SonicDroplet Support
 
   - FAQ:
-  - Why does AudioDrop need audio capture permission?
+  - Why does SonicDroplet need audio capture permission?
     → macOS may require permission before an app can record system audio.
-      AudioDrop uses that permission only to record audio.
+      SonicDroplet uses that permission only to record audio.
   - What formats are supported?
     → M4A (AAC) and WAV
   - Where are my recordings saved?
-    → You choose the save location each time. AudioDrop does not auto-save to a hidden folder.
-  - Does AudioDrop work offline?
-    → Yes, AudioDrop works completely offline.
-  - Does AudioDrop record my screen?
-    → No. AudioDrop records audio only.
+    → You choose the save location each time. SonicDroplet does not auto-save to a hidden folder.
+  - Does SonicDroplet work offline?
+    → Yes, SonicDroplet works completely offline.
+  - Does SonicDroplet record my screen?
+    → No. SonicDroplet records audio only.
   - I granted permission but recording doesn't work?
-    → Confirm you are running macOS 15 or later and try launching AudioDrop again.
+    → Confirm you are running macOS 15 or later and try launching SonicDroplet again.
 
-- Contact: [support email]
+- Contact: https://kemp144.github.io/AudioDrop/support/
 
 ## What's New — v1.0
 
-Initial release of AudioDrop.
+Initial release of SonicDroplet.
 • Record system-wide audio from your Mac
 • Save as M4A or WAV
 • Simple, private, and local-only
@@ -194,5 +208,5 @@ Data Used to Track You: None
 Data Not Linked to You: None
 Data Not Collected: Select this option
 
-Justification: AudioDrop does not collect any data. All audio recordings are stored locally
+Justification: SonicDroplet does not collect any data. All audio recordings are stored locally
 at user-chosen locations. No analytics, no network access, no accounts.

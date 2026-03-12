@@ -15,7 +15,7 @@
 		31F91BA4AC93BE1918949BB2 /* RecordingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314235FCDDD76D2FC646CA23 /* RecordingState.swift */; };
 		4CB7CB229368A5BFA0EC257A /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA065955319EAE1ADB96872F /* RecordingViewModel.swift */; };
 		4D6ABAEE763A8E7322D950EC /* LocalizationCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9032FA50517462EA24674 /* LocalizationCatalogTests.swift */; };
-		50C92B760CAA8247B5BA4E77 /* AudioDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01A6F6B3A9E7BB7EF0438AA /* AudioDropApp.swift */; };
+		50C92B760CAA8247B5BA4E77 /* SonicDropletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01A6F6B3A9E7BB7EF0438AA /* SonicDropletApp.swift */; };
 		536011132248F94F45E420A7 /* AudioFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBC1086925996481C96C61 /* AudioFileWriter.swift */; };
 		603A556C23284035E9FF1FFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825177AC933B4FDD93289FDD /* ContentView.swift */; };
 		74BCF2985A9D4B7C8E1F2A3B /* FileQuarantineManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D1A6C7E8F9401B2C3D4E5F /* FileQuarantineManagerTests.swift */; };
@@ -31,29 +31,29 @@
 			containerPortal = 3FD87327A2B999F0F3BA485E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A6C364D52B62260574F176E6;
-			remoteInfo = AudioDrop;
+			remoteInfo = SonicDroplet;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		12DC45DD32326817D672E25A /* RecordingControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingControlsView.swift; sourceTree = "<group>"; };
-		2A0AABC5B41CD031147DECCC /* AudioDropTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioDropTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A0AABC5B41CD031147DECCC /* SonicDropletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonicDropletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3E4F5061728394A5B6C7D8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		314235FCDDD76D2FC646CA23 /* RecordingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingState.swift; sourceTree = "<group>"; };
 		3A637867F625AA6AD529FF97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DBBC1086925996481C96C61 /* AudioFileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileWriter.swift; sourceTree = "<group>"; };
-		47C038388EEAACC9622730E9 /* AudioDrop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioDrop.entitlements; sourceTree = "<group>"; };
-		4C207A718525A3A510117D58 /* AudioDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C038388EEAACC9622730E9 /* SonicDroplet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SonicDroplet.entitlements; sourceTree = "<group>"; };
+		4C207A718525A3A510117D58 /* SonicDroplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SonicDroplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62FBBE33CE8CA41F4F464FCD /* RecordingStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingStateTests.swift; sourceTree = "<group>"; };
 		6E97C6FF80C027515CA6BEF6 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
-		85D1A6C7E8F9401B2C3D4E5F /* FileQuarantineManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileQuarantineManagerTests.swift; sourceTree = "<group>"; };
 		825177AC933B4FDD93289FDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		85D1A6C7E8F9401B2C3D4E5F /* FileQuarantineManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileQuarantineManagerTests.swift; sourceTree = "<group>"; };
 		8AD5624CDB6CD80176DB8743 /* AudioFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFormatTests.swift; sourceTree = "<group>"; };
 		92104DC3C4A3C0D2F4F2F034 /* AudioCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCaptureService.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60718293A4B5C /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B7F56B6670DD928F2914D319 /* AudioFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFormat.swift; sourceTree = "<group>"; };
 		BCA9032FA50517462EA24674 /* LocalizationCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationCatalogTests.swift; sourceTree = "<group>"; };
-		C01A6F6B3A9E7BB7EF0438AA /* AudioDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDropApp.swift; sourceTree = "<group>"; };
+		C01A6F6B3A9E7BB7EF0438AA /* SonicDropletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonicDropletApp.swift; sourceTree = "<group>"; };
 		C550BF62FFEF4255639DE3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CA065955319EAE1ADB96872F /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,10 +96,10 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		35CD4AB42388E94519711D1D /* AudioDrop */ = {
+		35CD4AB42388E94519711D1D /* SonicDroplet */ = {
 			isa = PBXGroup;
 			children = (
-				47C038388EEAACC9622730E9 /* AudioDrop.entitlements */,
+				47C038388EEAACC9622730E9 /* SonicDroplet.entitlements */,
 				C550BF62FFEF4255639DE3FD /* Info.plist */,
 				AD00382C7B1647867CD6345E /* App */,
 				27DE01147262B046CE7A8A9B /* Models */,
@@ -108,14 +108,14 @@
 				319DAFAD178E7957F4DD385D /* ViewModels */,
 				081A4A6F4D6F7F87F9F5756B /* Views */,
 			);
-			path = AudioDrop;
+			path = SonicDroplet;
 			sourceTree = "<group>";
 		};
 		A135091CE0F83A0A62303734 = {
 			isa = PBXGroup;
 			children = (
-				35CD4AB42388E94519711D1D /* AudioDrop */,
-				C6E559D6D1E15BA6957C9C9C /* AudioDropTests */,
+				35CD4AB42388E94519711D1D /* SonicDroplet */,
+				C6E559D6D1E15BA6957C9C9C /* SonicDropletTests */,
 				C5D4CA810AC5F2178FFBC055 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 		AD00382C7B1647867CD6345E /* App */ = {
 			isa = PBXGroup;
 			children = (
-				C01A6F6B3A9E7BB7EF0438AA /* AudioDropApp.swift */,
+				C01A6F6B3A9E7BB7EF0438AA /* SonicDropletApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -140,13 +140,13 @@
 		C5D4CA810AC5F2178FFBC055 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C207A718525A3A510117D58 /* AudioDrop.app */,
-				2A0AABC5B41CD031147DECCC /* AudioDropTests.xctest */,
+				4C207A718525A3A510117D58 /* SonicDroplet.app */,
+				2A0AABC5B41CD031147DECCC /* SonicDropletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C6E559D6D1E15BA6957C9C9C /* AudioDropTests */ = {
+		C6E559D6D1E15BA6957C9C9C /* SonicDropletTests */ = {
 			isa = PBXGroup;
 			children = (
 				8AD5624CDB6CD80176DB8743 /* AudioFormatTests.swift */,
@@ -154,15 +154,15 @@
 				BCA9032FA50517462EA24674 /* LocalizationCatalogTests.swift */,
 				62FBBE33CE8CA41F4F464FCD /* RecordingStateTests.swift */,
 			);
-			path = AudioDropTests;
+			path = SonicDropletTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63724692481126F9B934AD02 /* AudioDropTests */ = {
+		63724692481126F9B934AD02 /* SonicDropletTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF0D77E349A6587F1CDEE909 /* Build configuration list for PBXNativeTarget "AudioDropTests" */;
+			buildConfigurationList = CF0D77E349A6587F1CDEE909 /* Build configuration list for PBXNativeTarget "SonicDropletTests" */;
 			buildPhases = (
 				F8D584C08D1317F40997EAE4 /* Sources */,
 			);
@@ -171,16 +171,16 @@
 			dependencies = (
 				6070E59A9F4CD4317D06CF34 /* PBXTargetDependency */,
 			);
-			name = AudioDropTests;
+			name = SonicDropletTests;
 			packageProductDependencies = (
 			);
-			productName = AudioDropTests;
-			productReference = 2A0AABC5B41CD031147DECCC /* AudioDropTests.xctest */;
+			productName = SonicDropletTests;
+			productReference = 2A0AABC5B41CD031147DECCC /* SonicDropletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A6C364D52B62260574F176E6 /* AudioDrop */ = {
+		A6C364D52B62260574F176E6 /* SonicDroplet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDE2D7F938A37DE07020960F /* Build configuration list for PBXNativeTarget "AudioDrop" */;
+			buildConfigurationList = CDE2D7F938A37DE07020960F /* Build configuration list for PBXNativeTarget "SonicDroplet" */;
 			buildPhases = (
 				96D8B30AECBF239F8F265E9E /* Sources */,
 				8F6AEBE39ADCEFB5B77723C0 /* Resources */,
@@ -189,11 +189,11 @@
 			);
 			dependencies = (
 			);
-			name = AudioDrop;
+			name = SonicDroplet;
 			packageProductDependencies = (
 			);
-			productName = AudioDrop;
-			productReference = 4C207A718525A3A510117D58 /* AudioDrop.app */;
+			productName = SonicDroplet;
+			productReference = 4C207A718525A3A510117D58 /* SonicDroplet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D8A7F63616CCDA7725CB0B1 /* Build configuration list for PBXProject "AudioDrop" */;
+			buildConfigurationList = 3D8A7F63616CCDA7725CB0B1 /* Build configuration list for PBXProject "SonicDroplet" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -224,8 +224,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6C364D52B62260574F176E6 /* AudioDrop */,
-				63724692481126F9B934AD02 /* AudioDropTests */,
+				A6C364D52B62260574F176E6 /* SonicDroplet */,
+				63724692481126F9B934AD02 /* SonicDropletTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D519D092D099852CEDA0118F /* AudioCaptureService.swift in Sources */,
-				50C92B760CAA8247B5BA4E77 /* AudioDropApp.swift in Sources */,
+				50C92B760CAA8247B5BA4E77 /* SonicDropletApp.swift in Sources */,
 				536011132248F94F45E420A7 /* AudioFileWriter.swift in Sources */,
 				2C82D5FE9123AC19054E8CD1 /* AudioFormat.swift in Sources */,
 				603A556C23284035E9FF1FFB /* ContentView.swift in Sources */,
@@ -276,7 +276,7 @@
 /* Begin PBXTargetDependency section */
 		6070E59A9F4CD4317D06CF34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A6C364D52B62260574F176E6 /* AudioDrop */;
+			target = A6C364D52B62260574F176E6 /* SonicDroplet */;
 			targetProxy = FACD3A3B0E0952655A00868C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -293,9 +293,9 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.audiodrop.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kemp144.sonicdroplet.tests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioDrop.app/Contents/MacOS/AudioDrop";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonicDroplet.app/Contents/MacOS/SonicDroplet";
 			};
 			name = Release;
 		};
@@ -363,21 +363,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AudioDrop/AudioDrop.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SonicDroplet/SonicDroplet.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7B8JYS7JC8;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = AudioDrop/Info.plist;
+				INFOPLIST_FILE = SonicDroplet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.audiodrop.app;
-				PRODUCT_NAME = AudioDrop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kemp144.sonicdroplet;
+				PRODUCT_NAME = SonicDroplet;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -453,21 +453,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AudioDrop/AudioDrop.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SonicDroplet/SonicDroplet.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7B8JYS7JC8;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = AudioDrop/Info.plist;
+				INFOPLIST_FILE = SonicDroplet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.audiodrop.app;
-				PRODUCT_NAME = AudioDrop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kemp144.sonicdroplet;
+				PRODUCT_NAME = SonicDroplet;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -483,16 +483,16 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.audiodrop.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kemp144.sonicdroplet.tests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioDrop.app/Contents/MacOS/AudioDrop";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonicDroplet.app/Contents/MacOS/SonicDroplet";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D8A7F63616CCDA7725CB0B1 /* Build configuration list for PBXProject "AudioDrop" */ = {
+		3D8A7F63616CCDA7725CB0B1 /* Build configuration list for PBXProject "SonicDroplet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90DB0651FFE17AD63B01C5A3 /* Debug */,
@@ -501,7 +501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		CDE2D7F938A37DE07020960F /* Build configuration list for PBXNativeTarget "AudioDrop" */ = {
+		CDE2D7F938A37DE07020960F /* Build configuration list for PBXNativeTarget "SonicDroplet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAF1B6BB24408654788976FC /* Debug */,
@@ -510,7 +510,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		CF0D77E349A6587F1CDEE909 /* Build configuration list for PBXNativeTarget "AudioDropTests" */ = {
+		CF0D77E349A6587F1CDEE909 /* Build configuration list for PBXNativeTarget "SonicDropletTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E63C6DBCA8AC47C41F94AF97 /* Debug */,

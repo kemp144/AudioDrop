@@ -1,7 +1,7 @@
 import Darwin
 import Foundation
 import XCTest
-@testable import AudioDrop
+@testable import SonicDroplet
 
 final class FileQuarantineManagerTests: XCTestCase {
     func testClearIfPresentRemovesQuarantineAttribute() throws {
@@ -23,7 +23,7 @@ final class FileQuarantineManagerTests: XCTestCase {
     }
 
     private func setQuarantineAttribute(on url: URL) throws {
-        let value = Array("0081;65f04f5a;AudioDrop;".utf8)
+        let value = Array("0081;65f04f5a;SonicDroplet;".utf8)
         let result = try withFileSystemPath(for: url) { fileSystemPath in
             value.withUnsafeBytes { bytes in
                 setxattr(

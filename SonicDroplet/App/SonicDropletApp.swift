@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct AudioDropApp: App {
+struct SonicDropletApp: App {
     @StateObject private var viewModel = RecordingViewModel()
 
     var body: some Scene {

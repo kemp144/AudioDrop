@@ -1,5 +1,5 @@
 import XCTest
-@testable import AudioDrop
+@testable import SonicDroplet
 
 final class RecordingStateTests: XCTestCase {
 

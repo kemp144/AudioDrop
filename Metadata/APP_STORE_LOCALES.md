@@ -1,4 +1,4 @@
-# AudioDrop — App Store Locale Matrix
+# SonicDroplet — App Store Locale Matrix
 
 Use these locale codes when checking App Store Connect localizations against the shipping binary.
 

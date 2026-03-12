@@ -1,9 +1,9 @@
-# AudioDrop — QA and Submission Checklist
+# SonicDroplet — QA and Submission Checklist
 
 ## Pre-Submission Checklist
 
 ### Build
-- [ ] App builds successfully in Release configuration
+- [x] App builds successfully in Release configuration
 - [ ] No compiler warnings
 - [ ] No analyzer warnings
 - [ ] Archive builds successfully
@@ -65,7 +65,7 @@
 - [ ] All 39 target locales have no missing keys
 
 ### App Store Readiness
-- [ ] Bundle ID is correct
+- [x] Bundle ID is correct
 - [ ] Version and build numbers are set
 - [ ] App icon is present (all sizes)
 - [ ] Info.plist has all required keys
@@ -79,6 +79,18 @@
 - [ ] App Privacy answers are submitted
 - [ ] Category is set (Utilities)
 - [ ] Price is set
+
+### Verified Locally
+- [x] Project, target, and app product are renamed to `SonicDroplet`
+- [x] Bundle identifier is `com.kemp144.sonicdroplet`
+- [x] GitHub Pages source exists in `docs/`
+- [x] App Store metadata is aligned with `SonicDroplet`
+
+### Still Manual Before Submit
+- [ ] Push the repo so GitHub Pages URLs are publicly live
+- [ ] Confirm App Store Connect accepts the chosen public app name
+- [ ] Create a fresh Archive from `SonicDroplet.xcodeproj`
+- [ ] Upload screenshots in accepted Mac App Store sizes
 
 ### Edge Cases
 - [ ] Launch with no displays connected (unlikely but handle)

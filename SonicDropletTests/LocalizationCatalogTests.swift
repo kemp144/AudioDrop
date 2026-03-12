@@ -48,7 +48,7 @@ final class LocalizationCatalogTests: XCTestCase {
     ]
 
     func testLocalizableCatalogCoversAllShippingLocales() throws {
-        let catalog = try loadCatalog(at: "AudioDrop/Resources/Localizable.xcstrings")
+        let catalog = try loadCatalog(at: "SonicDroplet/Resources/Localizable.xcstrings")
         let strings = try XCTUnwrap(catalog["strings"] as? [String: Any])
 
         for key in requiredLocalizedKeys {
@@ -59,7 +59,7 @@ final class LocalizationCatalogTests: XCTestCase {
     }
 
     func testInfoPlistCatalogCoversAllShippingLocales() throws {
-        let catalog = try loadCatalog(at: "AudioDrop/Resources/InfoPlist.xcstrings")
+        let catalog = try loadCatalog(at: "SonicDroplet/Resources/InfoPlist.xcstrings")
         let strings = try XCTUnwrap(catalog["strings"] as? [String: Any])
         let usageDescription = try XCTUnwrap(strings["NSAudioCaptureUsageDescription"] as? [String: Any])
         let localizations = try XCTUnwrap(usageDescription["localizations"] as? [String: Any])

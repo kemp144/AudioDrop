@@ -5,7 +5,7 @@ import Foundation
 import OSLog
 import UniformTypeIdentifiers
 
-private let logger = Logger(subsystem: "com.audiodrop.app", category: "AudioFileWriter")
+private let logger = Logger(subsystem: "com.kemp144.sonicdroplet", category: "AudioFileWriter")
 
 enum FileQuarantineManager {
     static let quarantineAttributeName = "com.apple.quarantine"
@@ -50,7 +50,7 @@ final class AudioFileWriter: @unchecked Sendable {
         self.format = format
 
         let tempDir = FileManager.default.temporaryDirectory
-        let baseFilename = "AudioDrop_\(Self.timestampString())"
+        let baseFilename = "SonicDroplet_\(Self.timestampString())"
 
         switch format {
         case .wav:
@@ -179,9 +179,9 @@ enum AudioFileWriterError: LocalizedError {
         case .noAudioWritten:
             return String(localized: "error.noAudioWritten", defaultValue: "No audio was captured during the recording")
         case .exportUnavailable:
-            return String(localized: "error.exportUnavailable", defaultValue: "AudioDrop could not prepare the final audio file")
+            return String(localized: "error.exportUnavailable", defaultValue: "SonicDroplet could not prepare the final audio file")
         case .exportFailed:
-            return String(localized: "error.exportFailed", defaultValue: "AudioDrop could not finish the recording file")
+            return String(localized: "error.exportFailed", defaultValue: "SonicDroplet could not finish the recording file")
         case .exportCancelled:
             return String(localized: "error.exportCancelled", defaultValue: "The recording export was cancelled")
         }
